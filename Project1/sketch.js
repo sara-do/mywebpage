@@ -6,6 +6,13 @@ let ypos = 0;
 let xpos2 = 400;
 let ypos2 = 800;
 
+let ellipsecolor = 160;
+let xpos3 = 430;
+
+let xpos4 = 435;
+
+let xpos5 = 540;
+
 function setup() {
   // put setup code here
 createCanvas(windowWidth,windowHeight);
@@ -16,14 +23,15 @@ rectsize = random(100,400);
 }
 
 function draw() {
-  //purple rectangle next to vertical rectangle loop (random size)
+  //blue grey rectangle next to vertical rectangle loop (random size)
+  fill(50,80,100);
   rect(690,20,60,rectsize);
-  fill(100,130,150);
-  //grey-ish rectangle next to purple rectangle (random size)
+  //dark purple rectangle next to grey rectangle (random size)
+  fill(50,60,100);
   rect(670,10,40,rectsize);
-  fill(100,130,180);
 
   //small rectangle going down in line
+  fill(100,120,180);
   rect(xpos,ypos,20,10);
   xpos = xpos+2;
   ypos = ypos+2;
@@ -31,6 +39,7 @@ function draw() {
   rect(xpos2,ypos2,20,10);
   xpos2 = xpos2 - 2
   ypos2 = ypos2 - 2
+  fill(50,60,100);
 
   //colour change when mouse is pressed
   if(mouseIsPressed){
@@ -128,6 +137,34 @@ function draw() {
   for (let counter = 0; counter < width; counter = counter + 10){
     circle(counter, counter-100, 3, 3);
     fill(100,100,200);
+  }
+
+  //blue grey ellipse cloud
+  fill(45,80,120);
+  ellipse(xpos4,250,100,20);
+  //moves to right and make another ellipse when key is pressed
+  if(keyIsPressed){
+    xpos4 = xpos4 +120;
+  }
+
+  //green grey ellipse cloud
+  fill(55,90,110);
+  ellipse(xpos5,200,80,20);
+  //moves to right and make another ellipse when key is pressed
+  if(keyIsPressed){
+    xpos5 = xpos5 +100;
+  }
+
+  //purple grey ellipse cloud
+  fill(95,120,ellipsecolor);
+  ellipse(xpos3,100,300,90);
+  //moves to right and make another ellipse when key is pressed
+  if(keyIsPressed){
+    xpos3 = xpos3 +350;
+  }
+  //colour change when right mouse button is clicked
+  if(mouseButton === RIGHT){
+    ellipsecolor = 140;
   }
 
 }
