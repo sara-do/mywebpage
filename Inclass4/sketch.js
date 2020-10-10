@@ -1,41 +1,42 @@
-let xpos = 500;
-let ypos = 0;
-let xballspeed = 5;
-let yballspeed = 10;
+let xposList = [100,500,700,900,1000];
+let yposList = [400,300,500,200,100];
+let yspeedList = [13,12,10,6,8];
+let xspeedList = [2,3,1,5,4];
 
 function setup() {
-  // put setup code here
   createCanvas(windowWidth,windowHeight);
-
 }
 
 function draw() {
-  // put drawing code here
     background(10,65,120);
-    fill(120,120,200);
-    circle(xpos,ypos,250);
 
-    xpos = xpos + xballspeed;
-    ypos = ypos + yballspeed;
+    for(let i = 0; i < xposList.length ; i = i + 1){
 
-    //Check for x position
-    //Check when ball crosses right side of the canvas
-    if (xpos > width){
-      xballspeed = -xballspeed;
-    }
-    //Check when ball crosses left side of the canvas
-    if (xpos < 0){
-      xballspeed = -xballspeed;
-    }
+      circle(xposList[i],yposList[i],50);
 
-    //Check for y position
-    //Check when ball crosses the bottom of the canvas
-    if (ypos > height){
-      yballspeed = -yballspeed;
-    }
-    //Check when ball crosses top of the canvas
-    if (ypos < 0){
-      yballspeed = -yballspeed;
+      yposList[i] = yposList[i] + yspeedList[i];
+
+      if(yposList[i] > height){
+        yspeedList[i] = -yspeedList[i];
+      }
+
+      if(yposList[i] < 0){
+        yspeedList[i] = - yspeedList[i];
+      }
+
+   for(let i = 0; i < yposList.length ; i = i + 1){
+     xposList[i] = xposList[i] + xspeedList[i];
+
+     if(xposList[i] > width){
+       xspeedList[i] = -xspeedList[i];
+     }
+
+     if(xposList[i] < 0){
+       xspeedList[i] = - xspeedList[i];
+     }
+
+   }
+
     }
 
 }
