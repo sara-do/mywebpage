@@ -1,65 +1,129 @@
-let xoffset;
-let yoffset;
-
-let bcol;
-let rcol;
+  let yoff = 0.5;
 
 function setup() {
-createCanvas(windowWidth,windowHeight);
-background(0,0,0);
-
-xoffset = 0.3;
-yoffset = 0.3;
-
+  createCanvas(windowWidth, windowHeight);
 }
 
-function draw(){
+function draw() {
+  background(0,0,0);
 
-  bcol = noise(xoffset) * 255;
-  rcol = noise(yoffset) * 255;
+  let xoff = 0.5;
 
-//random colour change of the smallest left rectangle
-  fill(0,0,bcol,70);
-  rect(35, 81, 30, 50);
+// colour fill for the biggest shape
+    fill(20,50,150);
+//forming the biggest shape
+    beginShape();
 
-//random colour change of the second left rectangle
-  fill(30,0,bcol,70);
-  rect(100, 81, 50, 100);
+    for (let x = 0; x <= width; x += 5) {
 
-//random colour change of the third left rectangle
+      let y = map(noise(xoff,yoff), 0, 2, 300, 380);
 
-  fill(0,70,bcol,70);
-  rect(200, 81, 70, 200);
+      vertex(x, y);
 
-//random colour change of the fourth left rectangle
-  fill(0,0,bcol,120);
-  rect(320, 81, 80, 300);
+// x dimension increase for noise
+      xoff += 0.1;
+    }
 
-//random colour change of the fifth left rectangle
-  fill(0,0,bcol,170);
-  rect(440, 81, 100, 400);
+// y dimension increase for noise
+    yoff += 0.02;
+    vertex(width, height);
+    vertex(0, height);
+    endShape(CLOSE);
 
-//random colour change of the middle rectangle
-  fill(0,20,bcol,10);
-  rect(580, 81, 120, 500);
+    // colour fill for the first small shape
+      fill(20,50,100);
+    //forming the big shape
+      beginShape();
 
-//random colour change of the smallest left rectangle
-  fill(rcol,0,50,10);
-  rect(740, 81, 140, 600);
+      for (let x = 0; x <= width; x += 15) {
 
-//random colour change of the right rectangle
-  fill(rcol,0,40,170);
-  rect(920, 81, 120, 500);
+        let y = map(noise(xoff,yoff), 0, 2, 380, 300);
 
-//random colour change of the second rightrectangle
-  fill(rcol,0,90,170);
-  rect(1080, 81, 100, 400);
+        vertex(x, y);
 
-//random colour change of the third right rectangle
-  fill(rcol,30,40,170);
-  rect(1220, 81, 80, 300);
+    // x dimension increase for noise
+        xoff += 0.1;
+      }
 
-  xoffset = xoffset + 0.01;
-  yoffset = yoffset + 0.01;
+    // y dimension increase for noise
+      yoff += 0.02;
+      vertex(width, height);
+      vertex(0, height);
+      endShape(CLOSE);
+
+// colour fill for the second small shape
+  fill(20,50,90);
+//forming the big shape
+  beginShape();
+
+  for (let x = 0; x <= width; x += 10) {
+
+    let y = map(noise(xoff,yoff), 0, 2, 380, 350);
+
+    vertex(x, y);
+
+// x dimension increase for noise
+    xoff += 0.1;
+  }
+
+// y dimension increase for noise
+  yoff += 0.02;
+  vertex(width, height);
+  vertex(0, height);
+  endShape(CLOSE);
+
+  //colour fill for the third small shape
+    fill(20,30,100);
+  //forming the smallest shape
+    beginShape();
+
+    for (let x = 0; x <= width; x += 15) {
+
+      let y = map(noise(xoff,yoff), 0, 2, 480, 350);
+
+      vertex(x, y);
+
+  // x dimension increase for noise
+      xoff += 0.1;
+    }
+
+  // y dimension increase for noise
+    yoff += 0.02;
+    vertex(width, height);
+    vertex(0, height);
+    endShape(CLOSE);
+
+//colour fill for the smallest shape
+  fill(20,30,100);
+//forming the smallest shape
+  beginShape();
+
+  for (let x = 0; x <= width; x += 15) {
+
+    let y = map(noise(xoff,yoff), 0, 2, 500, 350);
+
+    vertex(x, y);
+
+// x dimension increase for noise
+    xoff += 0.1;
+  }
+
+// y dimension increase for noise
+  yoff += 0.02;
+  vertex(width, height);
+  vertex(0, height);
+  endShape(CLOSE);
+
+//biggest circle
+fill(20,30,70);
+circle(200,200,170,170);
+
+//middle size circle
+fill(20,35,60);
+circle(200,200,150,150);
+
+//smallest circle
+fill(20,30,40);
+circle(200,200,130,130);
 
 }
